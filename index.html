@@ -217,9 +217,9 @@
             text-transform: uppercase; color: var(--text-muted); margin-bottom: 5px;
         }
 
-        .slide-title { font-size: 42px; font-weight: 800; margin-bottom: 30px; position: relative; display: inline-block; letter-spacing: -1px; }
+        .slide-title { font-size: 42px; font-weight: 800; margin-bottom: 45px; position: relative; display: inline-block; letter-spacing: -1px; }
         .slide-title::after {
-            content: ''; position: absolute; bottom: -8px; left: 0; width: 50px; height: 6px;
+            content: ''; position: absolute; bottom: -16px; left: 0; width: 50px; height: 6px;
             background: var(--text-title); border-radius: 3px; transition: width 0.8s ease;
         }
         .slide.active .slide-title::after { width: 100%; }
@@ -255,7 +255,7 @@
         .gri-green { background: rgba(16,185,129,0.15); color: #10b981; font-weight: 800; padding: 8px 20px; border-radius: 12px; font-size: 15px; border: 1px solid rgba(16,185,129,0.3); }
 
         /* =========================================================
-           7. LAYOUTS Y TABLA
+           7. LAYOUTS Y TABLA CON HOVER
            ========================================================= */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; width: 100%; align-items: stretch; }
         .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; width: 100%; }
@@ -277,10 +277,17 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        .neon-table { width: 100%; border-collapse: separate; border-spacing: 0; background: rgba(255,255,255,0.7); border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.02); border: 1px solid #fff; }
-        .neon-table th, .neon-table td { padding: 25px 30px; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .neon-table { width: 100%; border-collapse: separate; border-spacing: 0; background: rgba(255,255,255,0.7); border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); border: 1px solid #fff; overflow: visible; }
+        .neon-table th, .neon-table td { padding: 25px 30px; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.05); transition: all 0.3s ease; }
         .neon-table th { font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-size: 13px; background: rgba(0,0,0,0.02); }
         .neon-table tr:last-child td { border-bottom: none; }
+        
+        /* Efecto Hover en las filas de la tabla */
+        .neon-table tbody tr { transition: all 0.3s ease; position: relative; }
+        .neon-table tbody tr:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: #fff; z-index: 10; border-radius: 12px; }
+        .neon-table tbody tr:hover td { background: #fff; border-bottom-color: transparent; }
+        .neon-table tbody tr:hover td:first-child { border-top-left-radius: 12px; border-bottom-left-radius: 12px; }
+        .neon-table tbody tr:hover td:last-child { border-top-right-radius: 12px; border-bottom-right-radius: 12px; }
 
         .stagger { opacity: 0; transform: translateY(30px); transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
         .slide.active .stagger { opacity: 1; transform: translateY(0); }
@@ -662,7 +669,7 @@
         <div class="slide" id="slide-12">
             <div class="glass-board">
                 <h2 class="slide-title title-cyan stagger">Viabilidad e Impacto Económico</h2>
-                <div class="zoom-glass-card hover-cyan stagger delay-1" style="padding: 0; border: none; overflow: hidden; background: #fff;">
+                <div class="zoom-glass-card hover-cyan stagger delay-1" style="padding: 0; border: none; overflow: visible; background: #fff;">
                     <table class="neon-table">
                         <thead style="background: rgba(0,0,0,0.03);">
                             <tr>
@@ -691,10 +698,13 @@
                                 <td class="text-emerald"><strong>Medio:</strong> Reducción residuos y daños.</td>
                                 <td><i class="fa-solid fa-circle-check text-emerald"></i> Alta</td>
                             </tr>
+                            <tr style="background: rgba(6, 182, 212, 0.05);">
+                                <td><strong style="color: var(--text-title); font-size: 16px; text-transform: uppercase;">Total Estimado:</strong></td>
+                                <td colspan="3"><strong class="text-cyan" style="font-size: 22px;">63.000€ - 140.000€</strong></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
-                <p class="stagger delay-2" style="margin-top: 20px; font-size: 13px; color: var(--text-muted);">*Nota: Inversiones orientativas sujetas a toma de datos real (operarios, referencias, rutas y flota).</p>
             </div>
         </div>
 
@@ -847,7 +857,7 @@
                 </div>
                 
                 <div class="zoom-glass-card bg-cyan hover-cyan stagger delay-3" style="text-align: center; border: none; padding: 25px;">
-                    <h3 class="text-cyan" style="font-size: 22px; margin-bottom: 10px;">PCCY-Log acompaña a ELECTROSUM PRO en una transformación viable, medible y escalable.</h3>
+                    <h3 class="text-cyan" style="font-size: 22px; margin-bottom: 10px;">En PCCY-Log acompañamos a nuestro cliente en una transformación viable, medible y escalable.</h3>
                     <p style="font-size: 32px; font-weight: 800; color: var(--text-title); margin: 0;">¿Empezamos?</p>
                 </div>
             </div>
