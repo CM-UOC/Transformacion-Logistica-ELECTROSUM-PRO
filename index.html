@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Propuesta PCCY-Log - ELECTROSUM PRO</title>
+    <title>Transformación Logística - ELECTROSUM PRO</title>
     
     <!-- Google Fonts Premium -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,7 @@
     
     <style>
         /* =========================================================
-           1. CORE & VARIABLES (LIGHT THEME - iOS STYLE)
+           1. VARIABLES GLOBALES (LIGHT THEME PREMIUM)
            ========================================================= */
         :root {
             --bg-base: #f1f5f9; 
@@ -23,7 +23,7 @@
             --text-main: #334155; 
             --text-muted: #64748b; 
             
-            /* Colores de Acento Vibrantes */
+            /* Paleta Brand Vibrante */
             --brand-cyan: #06b6d4;
             --brand-emerald: #10b981;
             --brand-purple: #8b5cf6;
@@ -31,16 +31,6 @@
             --brand-amber: #f59e0b;
             --brand-blue: #3b82f6;
             --brand-red: #ef4444; 
-
-            /* Glassmorphism Variables */
-            --canvas-bg: rgba(255, 255, 255, 0.45);
-            --canvas-blur: blur(50px);
-            --canvas-border: rgba(255, 255, 255, 0.6);
-            --canvas-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
-            
-            --card-bg: rgba(255, 255, 255, 0.8);
-            --card-border: rgba(255, 255, 255, 1);
-            --card-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.05), inset 0 2px 5px rgba(255,255,255,1);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -56,29 +46,28 @@
         }
 
         /* =========================================================
-           2. FONDO LÍQUIDO PASTEL Y DESTELLO
+           2. FONDO LÍQUIDO LUMINOSO (SIN RUIDO)
            ========================================================= */
         .liquid-bg {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -2; overflow: hidden;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            z-index: -3; overflow: hidden;
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
         }
 
         .gas-orb {
-            position: absolute; border-radius: 50%; filter: blur(130px);
+            position: absolute; border-radius: 50%; filter: blur(140px);
             opacity: 0.6; mix-blend-mode: multiply;
-            animation: float-gas 25s infinite alternate ease-in-out;
+            animation: float-gas 20s infinite alternate ease-in-out;
         }
 
-        .gas-orb.cyan { background: rgba(6, 182, 212, 0.35); width: 50vw; height: 50vw; top: -10%; left: -10%; }
-        .gas-orb.emerald { background: rgba(16, 185, 129, 0.25); width: 45vw; height: 45vw; bottom: -20%; right: -10%; animation-delay: -5s; }
-        .gas-orb.purple { background: rgba(139, 92, 246, 0.25); width: 40vw; height: 40vw; top: 20%; left: 30%; animation-delay: -10s; }
+        .gas-orb.cyan { background: rgba(6, 182, 212, 0.4); width: 45vw; height: 45vw; top: -5%; left: -5%; }
+        .gas-orb.purple { background: rgba(139, 92, 246, 0.3); width: 40vw; height: 40vw; bottom: -10%; right: -5%; animation-delay: -5s; }
+        .gas-orb.emerald { background: rgba(16, 185, 129, 0.3); width: 40vw; height: 40vw; top: 30%; left: 35%; animation-delay: -10s; }
 
         @keyframes float-gas {
             0% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(3%, 8%) scale(1.05); }
-            66% { transform: translate(-3%, 4%) scale(0.95); }
-            100% { transform: translate(5%, -5%) scale(1.1); }
+            50% { transform: translate(3%, 5%) scale(1.05); }
+            100% { transform: translate(-2%, -3%) scale(0.95); }
         }
 
         .cursor-glow {
@@ -89,22 +78,22 @@
         }
 
         /* =========================================================
-           3. MOTOR DE PRESENTACIÓN & EL GRAN CANVAS
+           3. MOTOR DE PRESENTACIÓN & EL GRAN CANVAS DE CRISTAL
            ========================================================= */
         .presentation-deck {
             position: relative; width: 100vw; height: 100vh;
             display: flex; align-items: center; justify-content: center;
-            perspective: 2500px;
-            padding: 30px;
+            perspective: 2000px;
+            padding: 40px;
         }
 
         .slide {
-            position: absolute; width: 100%; max-width: 1360px; height: 90vh; max-height: 800px;
+            position: absolute; width: 100%; max-width: 1400px; height: 90vh; max-height: 850px;
             display: flex; align-items: center; justify-content: center;
             z-index: 1; opacity: 0; pointer-events: none;
-            transform: scale(0.85) translateZ(-150px);
-            filter: blur(20px);
-            transition: all 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform: scale(0.9) translateZ(-100px);
+            filter: blur(15px);
+            transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         .slide.active {
@@ -113,31 +102,33 @@
             filter: blur(0);
         }
 
-        /* Transiciones Cinemáticas */
-        .slide.enter-right { transform: translateX(40vw) scale(0.85) rotateY(15deg); filter: blur(25px); opacity: 0; }
-        .slide.enter-left { transform: translateX(-40vw) scale(0.85) rotateY(-15deg); filter: blur(25px); opacity: 0; }
-        .slide.exit-left { transform: translateX(-30vw) scale(1.05) rotateY(-10deg); filter: blur(15px); opacity: 0; }
-        .slide.exit-right { transform: translateX(30vw) scale(1.05) rotateY(10deg); filter: blur(15px); opacity: 0; }
+        .slide.enter-right { transform: translateX(20vw) scale(0.9); opacity: 0; }
+        .slide.enter-left { transform: translateX(-20vw) scale(0.9); opacity: 0; }
+        .slide.exit-left { transform: translateX(-20vw) scale(1.05); opacity: 0; }
+        .slide.exit-right { transform: translateX(20vw) scale(1.05); opacity: 0; }
 
-        /* EL LIENZO PRINCIPAL DE CRISTAL (CANVAS) */
+        /* EL LIENZO PRINCIPAL */
         .glass-board {
             width: 100%; height: 100%;
-            background: var(--canvas-bg);
-            backdrop-filter: var(--canvas-blur); -webkit-backdrop-filter: var(--canvas-blur);
-            border-radius: 40px; 
-            box-shadow: var(--canvas-shadow);
-            padding: 50px 70px;
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(50px); -webkit-backdrop-filter: blur(50px);
+            border-radius: 48px; 
+            border-top: 1px solid rgba(255, 255, 255, 0.8);
+            border-left: 1px solid rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            border-right: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 40px 80px -20px rgba(15, 23, 42, 0.15), inset 0 0 40px rgba(255,255,255,0.4);
+            padding: 60px 80px;
             display: flex; flex-direction: column; justify-content: center;
             position: relative; overflow: hidden;
         }
 
-        /* Controles de Navegación Flotantes */
         .controls {
-            position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%);
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
             display: flex; gap: 20px; align-items: center; z-index: 100;
-            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px);
-            padding: 12px 30px; border-radius: 50px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08), inset 0 0 0 1px rgba(255,255,255,1);
+            background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px);
+            padding: 10px 30px; border-radius: 50px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05), inset 0 0 0 1px rgba(255,255,255,1);
         }
         .btn-nav {
             background: #f1f5f9; border: none; color: var(--text-title);
@@ -145,43 +136,107 @@
             display: flex; align-items: center; justify-content: center;
             cursor: pointer; transition: 0.3s; font-size: 18px; outline: none;
         }
-        .btn-nav:hover { background: var(--brand-cyan); color: #fff; transform: scale(1.1); box-shadow: 0 5px 15px rgba(6,182,212,0.4); }
-        .slide-counter { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--text-title); letter-spacing: 2px; font-size: 15px; min-width: 60px; text-align: center; }
+        .btn-nav:hover { background: var(--text-title); color: #fff; transform: scale(1.1); }
+        .slide-counter { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--text-title); letter-spacing: 2px; font-size: 14px; min-width: 60px; text-align: center; }
 
         /* =========================================================
-           4. TARJETAS INTERACTIVAS (3D TILT EFFECT)
+           4. TARJETAS GENERALES (EFECTO ZOOM LIQUID GLASS)
            ========================================================= */
-        .inner-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border); 
+        .zoom-glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.9);
+            border-left: 1px solid rgba(255, 255, 255, 0.9);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            border-right: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 28px; 
-            box-shadow: var(--card-shadow);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
             padding: 30px;
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            display: flex; flex-direction: column;
             position: relative; overflow: hidden;
+        }
+
+        .zoom-glass-card:hover {
+            transform: scale(1.03) translateY(-5px);
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+        }
+
+        .hover-cyan:hover { border-color: rgba(6, 182, 212, 0.6); box-shadow: 0 20px 40px -10px rgba(6, 182, 212, 0.2); }
+        .hover-purple:hover { border-color: rgba(139, 92, 246, 0.6); box-shadow: 0 20px 40px -10px rgba(139, 92, 246, 0.2); }
+        .hover-emerald:hover { border-color: rgba(16, 185, 129, 0.6); box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.2); }
+        .hover-amber:hover { border-color: rgba(245, 158, 11, 0.6); box-shadow: 0 20px 40px -10px rgba(245, 158, 11, 0.2); }
+        .hover-red:hover { border-color: rgba(239, 68, 68, 0.6); box-shadow: 0 20px 40px -10px rgba(239, 68, 68, 0.2); }
+
+        /* =========================================================
+           5. TARJETAS KPI (EFECTO 3D TILT EXCLUSIVO)
+           ========================================================= */
+        .tilt-wrapper { perspective: 1000px; width: 100%; height: 100%; }
+        
+        .kpi-tilt-card {
+            background: rgba(255, 255, 255, 0.7);
+            border-top: 1px solid rgba(255, 255, 255, 0.9);
+            border-left: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 24px; 
+            padding: 25px;
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+            will-change: transform;
+            height: 100%;
             display: flex; flex-direction: column;
         }
 
-        /* Contenedor perspectiva para el efecto 3D */
-        .tilt-wrapper {
-            perspective: 1000px;
-            width: 100%; height: 100%;
+        .kpi-subcard {
+            margin-top: 15px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 16px;
+            padding: 15px;
+            font-size: 13px;
+            color: var(--text-muted);
+            border: 1px solid rgba(255,255,255,0.4);
+            transform: translateZ(20px); 
         }
 
-        /* La tarjeta que rota */
-        .tilt-card {
-            transform-style: preserve-3d;
-            transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
-            will-change: transform;
-            height: 100%;
-        }
-
-        /* Efecto al entrar el ratón (gestionado por JS para rotar) */
-        .tilt-wrapper:hover .tilt-card {
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), inset 0 0 0 1px rgba(255,255,255,1);
+        .tilt-wrapper:hover .kpi-tilt-card {
+            box-shadow: 0 25px 40px -15px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.95);
             z-index: 5;
         }
 
-        /* Iconos sobre cajas luminosas */
+        /* =========================================================
+           6. TIPOGRAFÍA Y FORMATO
+           ========================================================= */
+        h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; margin: 0; color: var(--text-title); line-height: 1.2; }
+        p, li, td, th { font-family: 'Montserrat', sans-serif; line-height: 1.5; color: var(--text-main); font-weight: 500; }
+
+        h1 { font-size: 64px; font-weight: 900; letter-spacing: -1.5px; }
+
+        .mega-subtitle {
+            font-size: 24px; font-weight: 900; letter-spacing: 4px;
+            text-transform: uppercase; color: var(--text-muted); margin-bottom: 5px;
+        }
+
+        .slide-title { font-size: 42px; font-weight: 800; margin-bottom: 30px; position: relative; display: inline-block; letter-spacing: -1px; }
+        .slide-title::after {
+            content: ''; position: absolute; bottom: -8px; left: 0; width: 50px; height: 6px;
+            background: var(--text-title); border-radius: 3px; transition: width 0.8s ease;
+        }
+        .slide.active .slide-title::after { width: 100%; }
+        
+        .title-cyan::after { background: var(--brand-cyan); }
+        .title-emerald::after { background: var(--brand-emerald); }
+        .title-purple::after { background: var(--brand-purple); }
+        .title-amber::after { background: var(--brand-amber); }
+        .title-red::after { background: var(--brand-red); }
+
+        .text-cyan { color: var(--brand-cyan); }
+        .text-emerald { color: var(--brand-emerald); }
+        .text-purple { color: var(--brand-purple); }
+        .text-amber { color: var(--brand-amber); }
+        .text-pink { color: var(--brand-pink); }
+        .text-red { color: var(--brand-red); }
+        
         .icon-box {
             display: inline-flex; align-items: center; justify-content: center;
             width: 60px; height: 60px; border-radius: 20px;
@@ -192,39 +247,15 @@
         .bg-emerald { background: rgba(16, 185, 129, 0.1); color: var(--brand-emerald); }
         .bg-purple { background: rgba(139, 92, 246, 0.1); color: var(--brand-purple); }
         .bg-amber { background: rgba(245, 158, 11, 0.1); color: var(--brand-amber); }
-        .bg-pink { background: rgba(236, 72, 153, 0.1); color: var(--brand-pink); }
+        .bg-red { background: rgba(239, 68, 68, 0.1); color: var(--brand-red); }
+
+        /* GRI Tags */
+        .gri-blue { background: rgba(59,130,246,0.15); color: #3b82f6; font-weight: 800; padding: 8px 20px; border-radius: 12px; font-size: 15px; border: 1px solid rgba(59,130,246,0.3); }
+        .gri-red { background: rgba(239,68,68,0.15); color: #ef4444; font-weight: 800; padding: 8px 20px; border-radius: 12px; font-size: 15px; border: 1px solid rgba(239,68,68,0.3); }
+        .gri-green { background: rgba(16,185,129,0.15); color: #10b981; font-weight: 800; padding: 8px 20px; border-radius: 12px; font-size: 15px; border: 1px solid rgba(16,185,129,0.3); }
 
         /* =========================================================
-           5. TIPOGRAFÍA Y FORMATO
-           ========================================================= */
-        h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; margin: 0; color: var(--text-title); line-height: 1.2; }
-        p, li, td, th { font-family: 'Montserrat', sans-serif; line-height: 1.5; color: var(--text-main); font-weight: 500; }
-
-        h1 { font-size: 60px; font-weight: 900; letter-spacing: -1.5px; }
-
-        .slide-title { font-size: 38px; font-weight: 800; margin-bottom: 30px; position: relative; display: inline-block; letter-spacing: -1px; }
-        .slide-title::after {
-            content: ''; position: absolute; bottom: -8px; left: 0; width: 50px; height: 5px;
-            background: var(--text-title); border-radius: 3px; transition: width 0.8s ease;
-        }
-        .slide.active .slide-title::after { width: 100%; }
-        
-        .title-cyan::after { background: var(--brand-cyan); }
-        .title-emerald::after { background: var(--brand-emerald); }
-        .title-purple::after { background: var(--brand-purple); }
-
-        .text-cyan { color: var(--brand-cyan); }
-        .text-emerald { color: var(--brand-emerald); }
-        .text-purple { color: var(--brand-purple); }
-        .text-amber { color: var(--brand-amber); }
-        
-        /* GRI Tags - Colores Requeridos */
-        .tag-blue { background: rgba(59,130,246,0.15); color: var(--brand-blue); font-weight: 800; padding: 6px 15px; border-radius: 20px; font-size: 14px; border: 1px solid rgba(59,130,246,0.3); }
-        .tag-red { background: rgba(239,68,68,0.15); color: var(--brand-red); font-weight: 800; padding: 6px 15px; border-radius: 20px; font-size: 14px; border: 1px solid rgba(239,68,68,0.3); }
-        .tag-green { background: rgba(16,185,129,0.15); color: var(--brand-emerald); font-weight: 800; padding: 6px 15px; border-radius: 20px; font-size: 14px; border: 1px solid rgba(16,185,129,0.3); }
-
-        /* =========================================================
-           6. LAYOUTS
+           7. LAYOUTS Y TABLA
            ========================================================= */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; width: 100%; align-items: stretch; }
         .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; width: 100%; }
@@ -233,7 +264,7 @@
         .feature-list { list-style: none; }
         .feature-list li { 
             display: flex; align-items: flex-start; margin-bottom: 15px; padding: 15px; 
-            background: rgba(255, 255, 255, 0.6); border-radius: 20px; 
+            background: rgba(255, 255, 255, 0.5); border-radius: 20px; 
             border: 1px solid rgba(255,255,255,0.8);
         }
         .feature-list i { font-size: 20px; margin-right: 15px; margin-top: 2px; }
@@ -241,11 +272,15 @@
         .feature-list p { font-size: 13px; margin: 0; }
 
         .big-number { 
-            font-size: 140px; font-weight: 900; line-height: 1; letter-spacing: -5px;
+            font-size: 160px; font-weight: 900; line-height: 1; letter-spacing: -5px;
             background: linear-gradient(135deg, var(--brand-emerald), var(--brand-cyan));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            text-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
         }
+
+        .neon-table { width: 100%; border-collapse: separate; border-spacing: 0; background: rgba(255,255,255,0.7); border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.02); border: 1px solid #fff; }
+        .neon-table th, .neon-table td { padding: 25px 30px; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .neon-table th { font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-size: 13px; background: rgba(0,0,0,0.02); }
+        .neon-table tr:last-child td { border-bottom: none; }
 
         .stagger { opacity: 0; transform: translateY(30px); transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
         .slide.active .stagger { opacity: 1; transform: translateY(0); }
@@ -254,188 +289,248 @@
         .slide.active .delay-3 { transition-delay: 0.45s; }
 
         /* =========================================================
-           7. ROADMAP: CURVA PERFECTA Y NODOS EXTERIORES
+           8. ROADMAP MINIMALISTA ESTÁTICO
            ========================================================= */
-        .road-container { position: relative; width: 100%; height: 400px; margin-top: 20px; }
-        .road-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
-
-        /* Lineas animadas lentas */
-        .road-dashed { stroke-dasharray: 10 20; animation: moveRoad 100s linear infinite; }
-        @keyframes moveRoad { to { stroke-dashoffset: -2000; } }
-
-        .road-nodes { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; }
-        .road-node { position: absolute; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; justify-content: center; }
-
-        .road-circle {
-            width: 70px; height: 70px; border-radius: 50%; background: #fff; border: 4px solid var(--text-title);
-            display: flex; align-items: center; justify-content: center; font-size: 26px; color: var(--text-title);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1), inset 0 0 0 3px rgba(255,255,255,1);
-            position: relative; z-index: 3; transition: transform 0.4s ease;
-        }
-        .road-node:hover .road-circle { transform: scale(1.15); }
-        .node-cyan .road-circle { border-color: var(--brand-cyan); color: var(--brand-cyan); }
-        .node-purple .road-circle { border-color: var(--brand-purple); color: var(--brand-purple); }
-        .node-emerald .road-circle { border-color: var(--brand-emerald); color: var(--brand-emerald); }
-
-        .road-content {
-            position: absolute; width: 240px; text-align: center; padding: 15px;
-            background: rgba(255, 255, 255, 0.95); border: 1px solid rgba(255,255,255,1); border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08); backdrop-filter: blur(10px);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        .roadmap-min {
+            display: flex; align-items: center; justify-content: space-between;
+            width: 100%; height: 350px; position: relative; margin-top: 40px;
         }
         
-        .road-node .text-top { bottom: 90px; }
-        .road-node .text-bottom { top: 90px; }
-        .road-content::after { content: ''; position: absolute; left: 50%; width: 2px; height: 20px; background: rgba(0,0,0,0.1); }
-        .text-top::after { bottom: -20px; transform: translateX(-50%); }
-        .text-bottom::after { top: -20px; transform: translateX(-50%); }
+        .roadmap-line {
+            position: absolute; top: 50%; left: 5%; width: 90%; height: 4px;
+            background: linear-gradient(90deg, var(--brand-cyan), var(--brand-purple), var(--brand-emerald));
+            border-radius: 2px; transform: translateY(-50%); z-index: 1;
+            box-shadow: 0 0 15px rgba(6,182,212,0.4);
+        }
 
-        .road-content h4 { font-size: 18px; margin-bottom: 5px; font-weight: 800; }
-        .road-content p { font-size: 13px; margin: 0; font-weight: 600; line-height: 1.4; color: var(--text-muted);}
-        .road-node:hover .road-content { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+        .road-node-min {
+            position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center;
+            width: 20%;
+        }
+
+        .road-dot {
+            width: 30px; height: 30px; border-radius: 50%; background: #fff;
+            border: 5px solid var(--text-title); box-shadow: 0 0 0 5px rgba(255,255,255,0.5);
+            transition: 0.3s ease; position: relative;
+        }
+
+        .node-cyan .road-dot { border-color: var(--brand-cyan); }
+        .node-purple .road-dot { border-color: var(--brand-purple); }
+        .node-pink .road-dot { border-color: var(--brand-pink); }
+        .node-emerald .road-dot { border-color: var(--brand-emerald); }
+
+        .road-info {
+            position: absolute; width: 240px; text-align: center;
+            background: rgba(255,255,255,0.9); border: 1px solid #fff; border-radius: 20px;
+            padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            opacity: 0.7; transition: 0.4s;
+        }
+
+        .road-node-min:nth-child(odd) .road-info { bottom: 50px; }
+        .road-node-min:nth-child(even) .road-info { top: 50px; }
+
+        .road-node-min:hover .road-dot { transform: scale(1.3); box-shadow: 0 0 20px rgba(0,0,0,0.2); }
+        .road-node-min:hover .road-info { opacity: 1; transform: translateY(odd ? -10px : 10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+
+        .road-info h4 { font-size: 18px; margin-bottom: 5px; font-weight: 800; }
+        .road-info p { font-size: 13px; margin: 0; font-weight: 600; line-height: 1.4; color: var(--text-muted);}
+
     </style>
 </head>
 <body>
 
-    <!-- FONDO Y HALO -->
-    <div class="liquid-bg">
-        <div class="gas-orb cyan"></div>
-        <div class="gas-orb purple"></div>
-        <div class="gas-orb emerald"></div>
-    </div>
+    <!-- FONDO LÍQUIDO LUMINOSO -->
+    <div class="liquid-bg"></div>
+    <div class="gas-orb cyan"></div>
+    <div class="gas-orb purple"></div>
+    <div class="gas-orb emerald"></div>
     <div class="cursor-glow" id="cursorGlow"></div>
-
+    
     <!-- CONTROLES -->
     <div class="controls">
         <button class="btn-nav" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i></button>
-        <span class="slide-counter" id="counter">1 / 13</span>
+        <span class="slide-counter" id="counter">1 / 15</span>
         <button class="btn-nav" onclick="nextSlide()"><i class="fa-solid fa-chevron-right"></i></button>
     </div>
 
     <!-- MOTOR DE DIAPOSITIVAS -->
     <div class="presentation-deck" id="deck">
 
-        <!-- 1. Portada Ultra-Limpia -->
+        <!-- SLIDE 1: Portada -->
         <div class="slide" id="slide-1">
             <div class="glass-board" style="align-items: center; text-align: center;">
-                <div class="icon-box bg-cyan stagger" style="width: 120px; height: 120px; border-radius: 40px; margin: 0 auto 30px auto; box-shadow: 0 15px 30px rgba(6,182,212,0.15);">
+                <div class="icon-box bg-cyan stagger" style="width: 120px; height: 120px; border-radius: 40px; margin: 0 auto 30px auto;">
                     <i class="fa-solid fa-cube text-cyan" style="font-size: 60px;"></i>
                 </div>
                 <h1 class="stagger delay-1">Transformación Logística <br><span class="text-cyan">ELECTROSUM PRO</span></h1>
-                
-                <p class="stagger delay-2" style="font-size: 20px; max-width: 800px; margin: 20px auto 40px auto; color: var(--text-main);">Propuesta ejecutiva para mejorar eficiencia, trazabilidad, sostenibilidad y nivel de servicio B2B.</p>
-                
+                <p class="stagger delay-2" style="font-size: 22px; max-width: 800px; margin: 20px auto 40px auto; color: var(--text-main);">Propuesta ejecutiva para mejorar eficiencia, trazabilidad, sostenibilidad y nivel de servicio B2B.</p>
                 <div class="stagger delay-3" style="width: 80px; height: 4px; background: var(--text-title); margin: 0 auto 40px auto; border-radius: 2px;"></div>
-                
                 <p class="stagger delay-3" style="text-transform: uppercase; letter-spacing: 5px; color: var(--text-muted); font-size: 13px; font-weight: 700;">Presentado por</p>
                 <p class="stagger delay-4" style="font-size: 26px; font-weight: 800; color: var(--text-title); margin-top: 10px;">PCCY-Log Consulting</p>
             </div>
         </div>
 
-        <!-- 2. La Consultora y Metodología -->
+        <!-- SLIDE 2: Quiénes Somos -->
         <div class="slide" id="slide-2">
             <div class="glass-board">
-                <h2 class="slide-title title-purple stagger">PCCY-Log: Enfoque y Metodología</h2>
-                <p class="stagger delay-1" style="font-size: 20px; margin-bottom: 30px;">Nos enfocamos en el diagnóstico y rediseño de operaciones. <strong style="color: var(--brand-purple);">No ofrecemos marketing, ofrecemos metodología medible:</strong> transformamos procesos AS-IS en modelos TO-BE viables.</p>
+                <h2 class="slide-title title-purple stagger">PCCY-Log Consulting</h2>
+                <p class="stagger delay-1" style="font-size: 20px; margin-bottom: 30px;">Especialistas en mejora de procesos logísticos. No proponemos soluciones estándar: diseñamos mejoras adaptadas al problema real de ELECTROSUM PRO.</p>
                 
-                <div class="grid-3 stagger delay-2">
-                    <div class="tilt-wrapper">
-                        <div class="inner-card tilt-card">
-                            <div class="icon-box bg-amber"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
-                            <h3 style="font-size: 20px; margin-bottom: 10px;">1. Diagnóstico AS-IS</h3>
-                            <p style="font-size: 14px;">Análisis in situ. Identificación de cuellos de botella, errores de picking y desconexión entre el flujo físico y la información.</p>
-                        </div>
+                <div class="grid-4 stagger delay-2">
+                    <div class="zoom-glass-card hover-cyan">
+                        <div class="icon-box bg-cyan"><i class="fa-solid fa-shoe-prints"></i></div>
+                        <h3 style="font-size: 18px; margin-bottom: 10px;">Intralogística</h3>
+                        <p style="font-size: 13px;">Optimización de picking y rediseño de Layout ABC.</p>
                     </div>
-                    <div class="tilt-wrapper">
-                        <div class="inner-card tilt-card">
-                            <div class="icon-box bg-purple"><i class="fa-solid fa-bolt"></i></div>
-                            <h3 style="font-size: 20px; margin-bottom: 10px;">2. Optimización Lean</h3>
-                            <p style="font-size: 14px;">Metodología TIMWOODS para aniquilar movimientos innecesarios, esperas, sobreprocesamiento y defectos logísticos.</p>
-                        </div>
+                    <div class="zoom-glass-card hover-purple">
+                        <div class="icon-box bg-purple"><i class="fa-solid fa-server"></i></div>
+                        <h3 style="font-size: 18px; margin-bottom: 10px;">Digitalización</h3>
+                        <p style="font-size: 13px;">Implantación de SGA/WMS y flujos sin papel.</p>
                     </div>
-                    <div class="tilt-wrapper">
-                        <div class="inner-card tilt-card">
-                            <div class="icon-box bg-emerald"><i class="fa-solid fa-compass-drafting"></i></div>
-                            <h3 style="font-size: 20px; margin-bottom: 10px;">3. Diseño TO-BE</h3>
-                            <p style="font-size: 14px;">Modelo escalable integrado: SGA/WMS, Layout ABC, KPIs, rutas dinámicas y circularidad logística aplicada.</p>
-                        </div>
+                    <div class="zoom-glass-card hover-amber">
+                        <div class="icon-box bg-amber"><i class="fa-solid fa-chart-pie"></i></div>
+                        <h3 style="font-size: 18px; margin-bottom: 10px;">Data & KPIs</h3>
+                        <p style="font-size: 13px;">Implantación de indicadores de control logístico.</p>
+                    </div>
+                    <div class="zoom-glass-card hover-emerald">
+                        <div class="icon-box bg-emerald"><i class="fa-solid fa-leaf"></i></div>
+                        <h3 style="font-size: 18px; margin-bottom: 10px;">Sostenibilidad</h3>
+                        <p style="font-size: 13px;">Sostenibilidad logística y eficiencia aplicada.</p>
                     </div>
                 </div>
+                <p class="stagger delay-3" style="text-align: center; margin-top: 30px; font-weight: 800; font-size: 20px; color: var(--text-title);">Convertimos diagnóstico en implantación medible.</p>
             </div>
         </div>
 
-        <!-- 3. Contexto y Diagnóstico AS-IS (Fusionados para agilidad) -->
+        <!-- SLIDE 3: Metodología -->
         <div class="slide" id="slide-3">
             <div class="glass-board">
-                <h2 class="slide-title title-amber stagger">El Problema B2B y Diagnóstico AS-IS</h2>
-                <p class="stagger delay-1" style="font-size: 18px; margin-bottom: 25px;">En la distribución eléctrica, un error paraliza obras. <strong class="text-amber">La logística es el factor estratégico de competitividad</strong>.</p>
-                
-                <div class="grid-2 stagger delay-2">
-                    <div class="tilt-wrapper">
-                        <div class="inner-card tilt-card">
-                            <h3 style="font-size: 22px; margin-bottom: 15px;"><i class="fa-solid fa-triangle-exclamation text-amber" style="margin-right:10px;"></i> Limitaciones Estructurales</h3>
-                            <ul class="feature-list" style="margin:0;">
-                                <li><i class="fa-solid fa-hand-paper text-amber"></i> <div><strong>Picking Manual</strong> <p>Alta dependencia de la memoria y el papel.</p></div></li>
-                                <li><i class="fa-solid fa-shoe-prints text-amber"></i> <div><strong>Layout Ineficiente</strong> <p>Rotación mal ubicada y recorridos excesivos.</p></div></li>
-                                <li><i class="fa-solid fa-eye-slash text-amber"></i> <div><strong>Falta de Trazabilidad</strong> <p>Ausencia de SGA e inventario desconectado.</p></div></li>
-                                <li><i class="fa-solid fa-rotate-left text-amber"></i> <div><strong>Inversa Reactiva</strong> <p>Devoluciones corregidas post-cliente.</p></div></li>
-                            </ul>
-                        </div>
+                <h2 class="slide-title title-amber stagger">Enfoque Técnico y Metodología</h2>
+                <div class="grid-3 stagger delay-1" style="margin-bottom: 30px;">
+                    <div class="zoom-glass-card hover-amber">
+                        <div class="icon-box bg-amber"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                        <h3 style="font-size: 20px; margin-bottom: 15px;">1. Diagnóstico AS-IS</h3>
+                        <p style="font-size: 14px;">Análisis de la operativa actual, cuellos de botella, falta de trazabilidad y desconexión física.</p>
                     </div>
-                    <div class="tilt-wrapper">
-                        <div class="inner-card tilt-card" style="background: rgba(245, 158, 11, 0.05); justify-content: center;">
-                            <div class="icon-box bg-amber" style="width: 80px; height: 80px; margin: 0 auto 20px auto;"><i class="fa-solid fa-link text-amber" style="font-size: 35px;"></i></div>
-                            <h3 class="text-amber" style="text-align: center; font-size: 24px;">Causa Raíz</h3>
-                            <p style="text-align: center; font-size: 18px; font-weight: 600;">Falta total de integración entre la tecnología (Sistemas), la organización física del almacén y el control operativo.</p>
-                        </div>
+                    <div class="zoom-glass-card hover-purple">
+                        <div class="icon-box bg-purple"><i class="fa-solid fa-bolt"></i></div>
+                        <h3 style="font-size: 20px; margin-bottom: 15px;">2. Optimización Lean</h3>
+                        <p style="font-size: 14px;">Metodología TIMWOODS para reducir movimientos innecesarios, esperas y defectos.</p>
                     </div>
+                    <div class="zoom-glass-card hover-emerald">
+                        <div class="icon-box bg-emerald"><i class="fa-solid fa-compass-drafting"></i></div>
+                        <h3 style="font-size: 20px; margin-bottom: 15px;">3. Diseño TO-BE</h3>
+                        <p style="font-size: 14px;">Modelo escalable que conecta tecnología, operarios, almacén, transporte y sostenibilidad.</p>
+                    </div>
+                </div>
+                <div class="zoom-glass-card stagger delay-2" style="background: rgba(15,23,42,0.8); border: none; text-align: center; padding: 25px;">
+                    <h4 style="color: #fff; font-size: 20px; font-weight: 600;"><i class="fa-solid fa-link color-amber" style="margin-right: 15px;"></i> Nuestro método conecta diagnóstico, solución, impacto y viabilidad.</h4>
                 </div>
             </div>
         </div>
 
-        <!-- 4. El Impacto Real -->
+        <!-- SLIDE 4: Contexto B2B -->
         <div class="slide" id="slide-4">
-            <div class="glass-board" style="align-items: center; justify-content: center;">
-                <div class="tilt-wrapper" style="max-width: 900px; height: auto;">
-                    <div class="inner-card tilt-card stagger" style="padding: 70px; text-align: center; border-top: 6px solid var(--brand-purple);">
-                        <div class="icon-box bg-purple" style="width: 80px; height: 80px; border-radius: 25px; margin: 0 auto 30px auto;">
-                            <i class="fa-solid fa-quote-left text-purple" style="font-size: 40px;"></i>
-                        </div>
-                        <h2 style="font-size: 38px; font-weight: 600; line-height: 1.5; color: var(--text-title); margin-bottom: 30px;">
-                            "El coste real de un almacén no reside en las operaciones que ejecuta, sino en <strong class="text-purple" style="font-weight: 800;">todo lo que la ineficiencia le obliga a repetir</strong>."
-                        </h2>
-                        <p style="font-size: 18px; color: var(--text-muted); font-weight: 600;">Rehacer un pedido erróneo (transporte inverso, re-picking, administración) cuesta hasta 3 veces más que prepararlo bien a la primera. Generando un impacto letal en la confianza del cliente B2B.</p>
+            <div class="glass-board">
+                <h2 class="slide-title title-cyan stagger">Contexto: Logística Crítica B2B</h2>
+                <div class="grid-2 stagger delay-1">
+                    <div class="zoom-glass-card hover-cyan">
+                        <h3 class="text-cyan" style="font-size: 22px; margin-bottom: 25px;"><i class="fa-solid fa-list-check" style="margin-right:10px;"></i> Exigencias del Cliente Profesional</h3>
+                        <ul class="feature-list" style="margin:0;">
+                            <li><i class="fa-solid fa-check text-cyan"></i> <div><strong>Disponibilidad Inmediata:</strong> Inventario 100% fiable.</div></li>
+                            <li><i class="fa-solid fa-check text-cyan"></i> <div><strong>Precisión y Rapidez:</strong> Cero fallos, máxima agilidad.</div></li>
+                            <li><i class="fa-solid fa-check text-cyan"></i> <div><strong>Trazabilidad:</strong> Visibilidad total del suministro.</div></li>
+                        </ul>
+                    </div>
+                    <div class="zoom-glass-card hover-purple" style="background: rgba(139,92,246,0.05); border-color: rgba(139,92,246,0.2);">
+                        <h3 class="text-purple" style="font-size: 22px; margin-bottom: 25px;"><i class="fa-solid fa-triangle-exclamation" style="margin-right:10px;"></i> El Riesgo Actual</h3>
+                        <p style="font-size: 16px; margin-bottom: 30px; font-weight: 600;">Un error de entrega afecta directamente a obras, instalaciones o mantenimientos, deteriorando la confianza B2B.</p>
+                        <blockquote style="border-left: 4px solid var(--brand-purple); padding-left: 20px; font-size: 20px; font-weight: 800; color: var(--text-title); line-height: 1.4;">
+                            "En ELECTROSUM, la logística no es una función de soporte: es un <span class="text-purple">factor estratégico de competitividad</span>."
+                        </blockquote>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 5. Auditoría de Sostenibilidad -->
+        <!-- SLIDE 5: Diagnóstico AS-IS -->
         <div class="slide" id="slide-5">
             <div class="glass-board">
-                <h2 class="slide-title title-emerald stagger">Auditoría de Sostenibilidad Logística</h2>
+                <h2 class="slide-title title-amber stagger">Diagnóstico AS-IS: Operativa poco controlada</h2>
+                <div class="grid-2 stagger delay-1">
+                    <div class="zoom-glass-card hover-amber">
+                        <h3 style="font-size: 20px; margin-bottom: 20px;">Problemas Estructurales</h3>
+                        <ul class="feature-list" style="margin:0;">
+                            <li><i class="fa-solid fa-hand-paper text-amber"></i> <div><strong>Picking Manual:</strong> Dependencia total de papel y memoria.</div></li>
+                            <li><i class="fa-solid fa-shoe-prints text-amber"></i> <div><strong>Layout Ineficiente:</strong> Recorridos excesivos por mala ubicación.</div></li>
+                            <li><i class="fa-solid fa-eye-slash text-amber"></i> <div><strong>Falta de Trazabilidad:</strong> Ausencia de SGA/WMS e inventario poco fiable.</div></li>
+                        </ul>
+                    </div>
+                    <div class="zoom-glass-card hover-amber">
+                        <h3 style="font-size: 20px; margin-bottom: 20px;">Flujos Tensionados</h3>
+                        <ul class="feature-list" style="margin:0;">
+                            <li><i class="fa-solid fa-truck-ramp-box text-amber"></i> <div><strong>Expedición Tensionada:</strong> Validaciones manuales y mala coordinación.</div></li>
+                            <li><i class="fa-solid fa-rotate-left text-amber"></i> <div><strong>Logística Inversa Reactiva:</strong> Devoluciones corregidas post-entrega.</div></li>
+                        </ul>
+                        <div style="margin-top: 15px; padding: 15px; background: rgba(245,158,11,0.1); border-radius: 15px; font-weight: 700; color: var(--text-title);">
+                            Causa Raíz: Falta de integración entre tecnología, almacén y control operativo.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: Impacto del problema -->
+        <div class="slide" id="slide-6">
+            <div class="glass-board">
+                <h2 class="slide-title title-red stagger">El Impacto: Más errores, más costes, menos fiabilidad</h2>
+                <div class="grid-3 stagger delay-1" style="margin-bottom: 30px;">
+                    <div class="zoom-glass-card hover-red">
+                        <div class="icon-box bg-red text-red"><i class="fa-solid fa-gears"></i></div>
+                        <h3 style="font-size: 20px; margin-bottom: 15px;">Impacto Operativo</h3>
+                        <p style="font-size: 14px;">Recorridos innecesarios, búsquedas improductivas, duplicidad de comprobaciones y dificultad para absorber picos.</p>
+                    </div>
+                    <div class="zoom-glass-card hover-red">
+                        <div class="icon-box bg-red text-red"><i class="fa-solid fa-coins"></i></div>
+                        <h3 style="font-size: 20px; margin-bottom: 15px;">Impacto Económico</h3>
+                        <p style="font-size: 14px;">Devoluciones, reexpediciones, transporte adicional, tiempo administrativo y capital en stock obsoleto.</p>
+                    </div>
+                    <div class="zoom-glass-card hover-red">
+                        <div class="icon-box bg-red text-red"><i class="fa-solid fa-users-slash"></i></div>
+                        <h3 style="font-size: 20px; margin-bottom: 15px;">Impacto en Cliente</h3>
+                        <p style="font-size: 14px;">Pedidos incompletos, retrasos, pérdida de confianza y riesgo de fuga hacia la competencia.</p>
+                    </div>
+                </div>
+                <div class="zoom-glass-card stagger delay-2" style="border: none; text-align: center; padding: 25px; background: #fff;">
+                    <h4 class="text-red" style="font-size: 24px; font-weight: 800;">El coste real no está solo en el error, sino en todo lo que obliga a repetir.</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: Auditoría de Sostenibilidad -->
+        <div class="slide" id="slide-7">
+            <div class="glass-board">
+                <h2 class="slide-title title-emerald stagger">Sostenibilidad Logística: Reducir ineficiencias</h2>
                 <div class="grid-2 stagger delay-1" style="align-items: center;">
                     <div style="text-align: center;">
                         <div class="big-number">20%</div>
                         <p style="font-size: 22px; font-weight: 800; margin-top: 10px; letter-spacing: 2px;">OBJETIVO LEAN & GREEN</p>
-                        <p style="font-size: 16px; color: var(--text-muted);">Reducción de emisiones en 5 años.</p>
+                        <p style="font-size: 16px; color: var(--text-muted);">Reducción mínima de emisiones logísticas a 5 años.</p>
                     </div>
-                    <div class="tilt-wrapper">
-                        <div class="inner-card tilt-card">
-                            <h3 class="text-emerald" style="font-size: 24px; margin-bottom: 20px;">Eficiencia operativa medible</h3>
-                            <p style="font-size: 16px; margin-bottom: 25px;">Cada error de picking, devolución o reexpedición genera kilómetros, embalaje y emisiones que son 100% evitables.</p>
-                            
-                            <!-- Etiquetas GRI Requeridas -->
-                            <div style="display: flex; flex-direction: column; gap: 12px;">
-                                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 10px;">
-                                    <strong style="font-size: 15px;">Ahorro de Energía en Nave</strong> <span class="tag-blue">GRI 302</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 10px;">
-                                    <strong style="font-size: 15px;">Reducción Transporte / CO2</strong> <span class="tag-red">GRI 305</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <strong style="font-size: 15px;">Eliminación de Residuos Físicos</strong> <span class="tag-green">GRI 306</span>
-                                </div>
+                    <div class="zoom-glass-card hover-emerald" style="border: 2px solid rgba(16,185,129,0.3);">
+                        <h3 class="text-emerald" style="font-size: 22px; margin-bottom: 20px;">Eficiencia Operativa Medible</h3>
+                        <p style="font-size: 15px; margin-bottom: 20px;">La auditoría revela que parte del impacto ambiental es evitable. Cada error genera más kilómetros, más embalaje consumido y más emisiones.</p>
+                        
+                        <!-- Cajas GRI Estrictas -->
+                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 12px 20px; border-radius: 16px;">
+                                <strong>Energía y Eficiencia</strong> <span class="gri-blue">GRI 302</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 12px 20px; border-radius: 16px;">
+                                <strong>Control de Emisiones</strong> <span class="gri-red">GRI 305</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 12px 20px; border-radius: 16px;">
+                                <strong>Reducción de Residuos</strong> <span class="gri-green">GRI 306</span>
                             </div>
                         </div>
                     </div>
@@ -443,249 +538,318 @@
             </div>
         </div>
 
-        <!-- 6. Propuesta 1: SGA & Layout -->
-        <div class="slide" id="slide-6">
-            <div class="glass-board">
-                <h4 class="stagger" style="color: var(--text-muted); font-size: 16px; letter-spacing: 2px; text-transform: uppercase; font-weight: 800;">Mejora 01</h4>
-                <h2 class="slide-title title-cyan stagger" style="margin-top: 5px;">SGA/WMS + Layout ABC</h2>
-                <p class="stagger delay-1" style="font-size: 16px; margin-bottom: 20px;"><strong class="text-cyan">Ataca el Problema:</strong> Errores de preparación, saturación de referencias, falta de trazabilidad y descontrol de inventario.</p>
-                
-                <div class="grid-2 stagger delay-2">
-                    <div class="tilt-wrapper">
-                        <div class="inner-card tilt-card">
-                            <h3 style="font-size: 18px; margin-bottom: 15px;">Ventajas Operativas</h3>
-                            <ul class="feature-list" style="margin:0;">
-                                <li><i class="fa-solid fa-mobile-screen-button text-cyan"></i> <div><strong>Validación RF/PDA:</strong> Trazabilidad en tiempo real.</div></li>
-                                <li><i class="fa-solid fa-arrows-down-to-line text-cyan"></i> <div><strong>Slotting ABC:</strong> Alta rotación cerca de expedición.</div></li>
-                            </ul>
-                            <div style="margin-top: 15px; padding: 15px; background: rgba(6,182,212,0.1); border-radius: 15px;">
-                                <strong class="text-cyan">Impacto Estimado:</strong> Hasta 40% menos en tiempos de preparación.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tilt-wrapper">
-                        <div class="inner-card tilt-card" style="justify-content: center;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
-                                <div>
-                                    <p style="text-transform: uppercase; font-size: 12px; font-weight: 800; color: var(--text-muted);">Periodo Implantación</p>
-                                    <p style="font-size: 22px; font-weight: 800; color: var(--text-title);">3 - 6 meses</p>
-                                </div>
-                                <div>
-                                    <p style="text-transform: uppercase; font-size: 12px; font-weight: 800; color: var(--text-muted);">Coste Aproximado</p>
-                                    <p class="text-cyan" style="font-size: 26px; font-weight: 900;">30k€ - 100k€</p>
-                                </div>
-                            </div>
-                            <p style="font-size: 14px; margin-bottom: 10px;"><strong>Viabilidad:</strong> Alta.</p>
-                            <p style="font-size: 14px; color: var(--text-muted);"><strong>Riesgos:</strong> Resistencia al cambio operario. <strong>Mitigación:</strong> Formación intensiva y piloto por zonas.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 7. Propuesta 2: Transporte Eco -->
-        <div class="slide" id="slide-7">
-            <div class="glass-board">
-                <h4 class="stagger" style="color: var(--text-muted); font-size: 16px; letter-spacing: 2px; text-transform: uppercase; font-weight: 800;">Mejora 02</h4>
-                <h2 class="slide-title title-purple stagger" style="margin-top: 5px;">Transporte Eco-Eficiente</h2>
-                <p class="stagger delay-1" style="font-size: 16px; margin-bottom: 20px;"><strong class="text-purple">Ataca el Problema:</strong> Sobrecostes de expedición, baja consolidación de carga, kilómetros en vacío y emisiones.</p>
-                
-                <div class="grid-2 stagger delay-2">
-                    <div class="tilt-wrapper">
-                        <div class="inner-card tilt-card">
-                            <h3 style="font-size: 18px; margin-bottom: 15px;">Ventajas Operativas</h3>
-                            <ul class="feature-list" style="margin:0;">
-                                <li><i class="fa-solid fa-map-location-dot text-purple"></i> <div><strong>Software TMS:</strong> Planificación dinámica de rutas.</div></li>
-                                <li><i class="fa-solid fa-truck-droplet text-purple"></i> <div><strong>Transición Flota:</strong> Vehículos de bajas emisiones.</div></li>
-                            </ul>
-                            <div style="margin-top: 15px; padding: 15px; background: rgba(139,92,246,0.1); border-radius: 15px;">
-                                <strong class="text-purple">Impacto Estimado:</strong> Reducción del 10%-15% en costes de rutas.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tilt-wrapper">
-                        <div class="inner-card tilt-card" style="justify-content: center;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
-                                <div>
-                                    <p style="text-transform: uppercase; font-size: 12px; font-weight: 800; color: var(--text-muted);">Periodo Implantación</p>
-                                    <p style="font-size: 22px; font-weight: 800; color: var(--text-title);">6 - 12 meses</p>
-                                </div>
-                                <div>
-                                    <p style="text-transform: uppercase; font-size: 12px; font-weight: 800; color: var(--text-muted);">Coste Aproximado</p>
-                                    <p class="text-purple" style="font-size: 26px; font-weight: 900;">TMS: 8k-15k€</p>
-                                    <p class="text-purple" style="font-size: 14px; font-weight: 700;">Leasing: +23.5k€/año</p>
-                                </div>
-                            </div>
-                            <p style="font-size: 14px; margin-bottom: 10px;"><strong>Viabilidad:</strong> Media-alta.</p>
-                            <p style="font-size: 14px; color: var(--text-muted);"><strong>Riesgos:</strong> Coste de electrificación. <strong>Mitigación:</strong> Optimizar con TMS antes de comprar flota.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 8. Propuesta 3: Embalaje Circular -->
+        <!-- SLIDE 8: Modelo TO-BE -->
         <div class="slide" id="slide-8">
             <div class="glass-board">
-                <h4 class="stagger" style="color: var(--text-muted); font-size: 16px; letter-spacing: 2px; text-transform: uppercase; font-weight: 800;">Mejora 03</h4>
-                <h2 class="slide-title title-emerald stagger" style="margin-top: 5px;">Embalaje Circular</h2>
-                <p class="stagger delay-1" style="font-size: 16px; margin-bottom: 20px;"><strong class="text-emerald">Ataca el Problema:</strong> Consumo de un solo uso, daños a producto, residuos y logística inversa desordenada.</p>
-                
-                <div class="grid-2 stagger delay-2">
-                    <div class="tilt-wrapper">
-                        <div class="inner-card tilt-card">
-                            <h3 style="font-size: 18px; margin-bottom: 15px;">Ventajas Operativas</h3>
-                            <ul class="feature-list" style="margin:0;">
-                                <li><i class="fa-solid fa-box-open text-emerald"></i> <div><strong>Soportes RTP:</strong> Cajas retornables para clientes recurrentes.</div></li>
-                                <li><i class="fa-solid fa-rotate text-emerald"></i> <div><strong>Logística Inversa:</strong> Circuito cerrado de recuperación.</div></li>
-                            </ul>
-                            <div style="margin-top: 15px; padding: 15px; background: rgba(16,185,129,0.1); border-radius: 15px;">
-                                <strong class="text-emerald">Impacto Estimado:</strong> Reducción drástica de residuos y ahorro recurrente en cartón.
-                            </div>
-                        </div>
+                <h2 class="slide-title title-cyan stagger">Modelo TO-BE: De reactivo a trazable</h2>
+                <div class="grid-3 stagger delay-1" style="margin-bottom: 30px;">
+                    <div class="zoom-glass-card hover-cyan" style="text-align: center;">
+                        <div class="icon-box bg-cyan" style="width: 70px; height: 70px; margin: 0 auto 20px auto;"><i class="fa-solid fa-server"></i></div>
+                        <h3 style="font-size: 20px; margin-bottom: 15px;">1. Almacén Inteligente</h3>
+                        <p style="font-size: 14px;">SGA/WMS, radiofrecuencia, slotting ABC y KPIs integrados.</p>
                     </div>
-                    <div class="tilt-wrapper">
-                        <div class="inner-card tilt-card" style="justify-content: center;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
-                                <div>
-                                    <p style="text-transform: uppercase; font-size: 12px; font-weight: 800; color: var(--text-muted);">Periodo Implantación</p>
-                                    <p style="font-size: 22px; font-weight: 800; color: var(--text-title);">3 - 6 meses</p>
-                                </div>
-                                <div>
-                                    <p style="text-transform: uppercase; font-size: 12px; font-weight: 800; color: var(--text-muted);">Coste Aproximado</p>
-                                    <p class="text-emerald" style="font-size: 26px; font-weight: 900;">~ 25.000€</p>
-                                </div>
-                            </div>
-                            <p style="font-size: 14px; margin-bottom: 10px;"><strong>Viabilidad:</strong> Alta en B2B estable.</p>
-                            <p style="font-size: 14px; color: var(--text-muted);"><strong>Riesgos:</strong> Pérdida de embalajes. <strong>Mitigación:</strong> Trazabilidad y acuerdos formales con clientes.</p>
-                        </div>
+                    <div class="zoom-glass-card hover-purple" style="text-align: center;">
+                        <div class="icon-box bg-purple" style="width: 70px; height: 70px; margin: 0 auto 20px auto;"><i class="fa-solid fa-truck-fast"></i></div>
+                        <h3 style="font-size: 20px; margin-bottom: 15px;">2. Transporte Optimizado</h3>
+                        <p style="font-size: 14px;">Rutas dinámicas, consolidación de carga y reducción de km en vacío.</p>
                     </div>
+                    <div class="zoom-glass-card hover-emerald" style="text-align: center;">
+                        <div class="icon-box bg-emerald" style="width: 70px; height: 70px; margin: 0 auto 20px auto;"><i class="fa-solid fa-recycle"></i></div>
+                        <h3 style="font-size: 20px; margin-bottom: 15px;">3. Circularidad</h3>
+                        <p style="font-size: 14px;">Embalaje reutilizable y logística inversa ordenada sin residuos.</p>
+                    </div>
+                </div>
+                <div class="zoom-glass-card stagger delay-2" style="background: rgba(15,23,42,0.8); text-align: center; padding: 25px;">
+                    <h4 style="color: #fff; font-size: 20px; font-weight: 600;">Primero ordenar y medir, después optimizar y finalmente escalar.</h4>
                 </div>
             </div>
         </div>
 
-        <!-- 9. ROADMAP (La curva perfecta) -->
+        <!-- SLIDE 9: Propuesta 1 -->
         <div class="slide" id="slide-9">
             <div class="glass-board">
-                <h2 class="slide-title title-cyan stagger">Roadmap de Implantación (18 Meses)</h2>
+                <div class="mega-subtitle stagger">PROPUESTA 1</div>
+                <h2 class="slide-title title-cyan stagger" style="margin-top: 5px;">SGA/WMS y Layout ABC</h2>
+                <p class="stagger delay-1" style="font-size: 16px; margin-bottom: 25px;"><strong class="text-cyan">Problema:</strong> Errores, saturación y recorridos largos.</p>
                 
-                <div class="road-container stagger delay-1">
-                    <svg class="road-svg" viewBox="0 0 1000 400" preserveAspectRatio="none">
-                        <!-- Sombra base carretera -->
-                        <path d="M -50 200 C 150 200, 150 100, 300 100 C 450 100, 450 300, 600 300 C 750 300, 750 100, 900 100 C 1050 100, 1050 200, 1100 200" 
-                              fill="none" stroke="rgba(15, 23, 42, 0.05)" stroke-width="45" stroke-linecap="round"/>
-                        <!-- Pista blanca/clara principal -->
-                        <path d="M -50 200 C 150 200, 150 100, 300 100 C 450 100, 450 300, 600 300 C 750 300, 750 100, 900 100 C 1050 100, 1050 200, 1100 200" 
-                              fill="none" stroke="#ffffff" stroke-width="30" stroke-linecap="round"/>
-                        <!-- Doble línea central lenta -->
-                        <path class="road-dashed" transform="translate(0, -4)" d="M -50 200 C 150 200, 150 100, 300 100 C 450 100, 450 300, 600 300 C 750 300, 750 100, 900 100 C 1050 100, 1050 200, 1100 200" 
-                              fill="none" stroke="var(--brand-cyan)" stroke-width="2" stroke-linecap="round"/>
-                        <path class="road-dashed" transform="translate(0, 4)" d="M -50 200 C 150 200, 150 100, 300 100 C 450 100, 450 300, 600 300 C 750 300, 750 100, 900 100 C 1050 100, 1050 200, 1100 200" 
-                              fill="none" stroke="var(--brand-cyan)" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-
-                    <div class="road-nodes">
-                        <!-- Nodo 1: Cima (x:30%, y:25%) -> y:100 matematico -->
-                        <div class="road-node node-cyan" style="left: 30%; top: 25%;">
-                            <div class="road-content text-bottom">
-                                <h4>Fase 1: Mes 1-2</h4>
-                                <p>Auditoría y Layout ABC (Quick Wins).</p>
-                            </div>
-                            <div class="road-circle"><i class="fa-solid fa-magnifying-glass"></i></div>
-                        </div>
-
-                        <!-- Nodo 2: Valle (x:60%, y:75%) -> y:300 matematico -->
-                        <div class="road-node node-purple" style="left: 60%; top: 75%;">
-                            <div class="road-content text-top">
-                                <h4>Fase 2: Mes 3-6</h4>
-                                <p>SGA/WMS, ERP, RF y Formación.</p>
-                            </div>
-                            <div class="road-circle"><i class="fa-solid fa-server"></i></div>
-                        </div>
-
-                        <!-- Nodo 3: Cima (x:90%, y:25%) -> y:100 matematico -->
-                        <div class="road-node node-emerald" style="left: 90%; top: 25%;">
-                            <div class="road-content text-bottom">
-                                <h4>Fase 3: Mes 7-12+</h4>
-                                <p>Rutas TMS, Piloto Circular y Escalado.</p>
-                            </div>
-                            <div class="road-circle"><i class="fa-solid fa-rocket"></i></div>
-                        </div>
+                <div class="grid-2 stagger delay-2">
+                    <div class="zoom-glass-card hover-cyan">
+                        <h3 style="font-size: 18px; margin-bottom: 15px;">Solución e Impacto</h3>
+                        <ul class="feature-list" style="margin:0;">
+                            <li><i class="fa-solid fa-mobile-screen-button text-cyan"></i> <div><strong>SGA/WMS Conectado al ERP:</strong> RF/PDA y validación real.</div></li>
+                            <li><i class="fa-solid fa-arrows-down-to-line text-cyan"></i> <div><strong>Layout ABC:</strong> Rediseño de ubicaciones por rotación.</div></li>
+                            <li><i class="fa-solid fa-bolt text-cyan"></i> <div><strong>Impacto:</strong> Hasta un 40% menos en tiempos de preparación.</div></li>
+                        </ul>
+                    </div>
+                    <div class="zoom-glass-card hover-cyan bg-cyan" style="justify-content: center; border:none; text-align: center;">
+                        <p style="text-transform: uppercase; font-size: 14px; font-weight: 800; color: var(--text-muted);">Inversión Aproximada</p>
+                        <p class="text-cyan" style="font-size: 42px; font-weight: 900; line-height: 1.1; margin-bottom: 20px;">30.000€ - 100.000€</p>
+                        
+                        <p style="text-transform: uppercase; font-size: 14px; font-weight: 800; color: var(--text-muted);">Implantación</p>
+                        <p style="font-size: 28px; font-weight: 800; color: var(--text-title);"><i class="fa-regular fa-calendar-check text-cyan"></i> 3 - 6 meses</p>
                     </div>
                 </div>
-                <p style="text-align: center; font-weight: 700; color: var(--text-title); margin-top: 20px;">Estrategia Progresiva: Primero ordenar, después digitalizar, finalmente escalar.</p>
             </div>
         </div>
 
-        <!-- 10. KPIs (Descripciones Añadidas) -->
+        <!-- SLIDE 10: Propuesta 2 -->
         <div class="slide" id="slide-10">
             <div class="glass-board">
-                <h2 class="slide-title title-pink stagger">KPIs: Lo que no se mide, no se mejora</h2>
-                <div class="grid-2 stagger delay-1">
-                    <div class="tilt-wrapper">
-                        <div class="inner-card tilt-card">
-                            <ul class="feature-list" style="margin:0;">
-                                <li><i class="fa-solid fa-boxes-packing text-cyan"></i> <div><strong>% Pedidos Sin Error</strong> <p>Mide la precisión del picking. Vital para evitar incidencias directas y devoluciones del cliente B2B.</p></div></li>
-                                <li><i class="fa-solid fa-clipboard-check text-purple"></i> <div><strong>Exactitud de Inventario</strong> <p>Mide la fiabilidad comparando el stock físico real vs el registrado en el ERP/SGA.</p></div></li>
-                                <li><i class="fa-solid fa-chart-line text-amber"></i> <div><strong>Líneas Preparadas / Hora</strong> <p>Mide la productividad y rendimiento de los operarios gracias al nuevo Layout ABC.</p></div></li>
-                                <li><i class="fa-solid fa-stopwatch text-pink"></i> <div><strong>OTIF (A tiempo y Completo)</strong> <p>Mide el Nivel de Servicio garantizando que el pedido B2B llega completo y en la hora pactada.</p></div></li>
-                            </ul>
-                        </div>
+                <div class="mega-subtitle stagger">PROPUESTA 2</div>
+                <h2 class="slide-title title-purple stagger" style="margin-top: 5px;">Transporte Eco-Eficiente</h2>
+                <p class="stagger delay-1" style="font-size: 16px; margin-bottom: 25px;"><strong class="text-purple">Problema:</strong> Baja consolidación de carga, kilómetros innecesarios y emisiones evitables.</p>
+                
+                <div class="grid-2 stagger delay-2">
+                    <div class="zoom-glass-card hover-purple">
+                        <h3 style="font-size: 18px; margin-bottom: 15px;">Solución e Impacto</h3>
+                        <ul class="feature-list" style="margin:0;">
+                            <li><i class="fa-solid fa-map-location-dot text-purple"></i> <div><strong>TMS / Rutas Dinámicas:</strong> Software de planificación y consolidación.</div></li>
+                            <li><i class="fa-solid fa-leaf text-purple"></i> <div><strong>Transición Progresiva:</strong> Flota de bajas emisiones.</div></li>
+                            <li><i class="fa-solid fa-bolt text-purple"></i> <div><strong>Impacto:</strong> Ahorro del 10%-15% en costes de rutas y combustible.</div></li>
+                        </ul>
                     </div>
-                    <div class="tilt-wrapper">
-                        <div class="inner-card tilt-card">
-                            <ul class="feature-list" style="margin:0;">
-                                <li><i class="fa-solid fa-truck text-blue"></i> <div><strong>Km por Pedido / Ocupación</strong> <p>Mide la eficiencia del TMS evaluando el llenado del camión y los kilómetros improductivos.</p></div></li>
-                                <li><i class="fa-solid fa-arrow-rotate-left text-red"></i> <div><strong>Devoluciones por Error</strong> <p>Mide el volumen de logística inversa generada exclusivamente por fallos internos.</p></div></li>
-                                <li><i class="fa-solid fa-cloud text-emerald"></i> <div><strong>Emisiones por Pedido</strong> <p>Mide el impacto directo de huella de carbono por entrega realizada (GRI 305).</p></div></li>
-                                <li><i class="fa-solid fa-box-open text-emerald"></i> <div><strong>% Embalaje Reutilizable</strong> <p>Mide el éxito del programa de circularidad y la reducción de residuo plástico/cartón.</p></div></li>
-                            </ul>
-                        </div>
+                    <div class="zoom-glass-card hover-purple bg-purple" style="justify-content: center; border:none; text-align: center;">
+                        <p style="text-transform: uppercase; font-size: 14px; font-weight: 800; color: var(--text-muted);">Software TMS</p>
+                        <p class="text-purple" style="font-size: 32px; font-weight: 900; line-height: 1.1; margin-bottom: 15px;">8.000€ - 15.000€</p>
+                        
+                        <p style="text-transform: uppercase; font-size: 14px; font-weight: 800; color: var(--text-muted);">Leasing Desde</p>
+                        <p class="text-purple" style="font-size: 32px; font-weight: 900; line-height: 1.1; margin-bottom: 15px;">23.500€ <span style="font-size:16px;">/año</span></p>
+                        
+                        <p style="font-size: 20px; font-weight: 800; color: var(--text-title);"><i class="fa-regular fa-calendar-check text-purple"></i> Implantación 6 - 12m</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 11. Cierre Estratégico: ¿Por qué nosotros? -->
+        <!-- SLIDE 11: Propuesta 3 -->
         <div class="slide" id="slide-11">
             <div class="glass-board">
-                <h2 class="slide-title title-cyan stagger">¿Por qué elegir a PCCY-Log?</h2>
-                <p class="stagger delay-1" style="font-size: 20px; margin-bottom: 30px;">No somos una consultoría externa que entrega un informe genérico. Somos el <strong>socio técnico</strong> que convierte el diagnóstico en una implantación medible que aporta valor al cliente B2B.</p>
+                <div class="mega-subtitle stagger">PROPUESTA 3</div>
+                <h2 class="slide-title title-emerald stagger" style="margin-top: 5px;">Embalaje Circular</h2>
+                <p class="stagger delay-1" style="font-size: 16px; margin-bottom: 25px;"><strong class="text-emerald">Problema:</strong> Consumo de embalaje de un uso, daños a producto y residuos.</p>
                 
-                <div class="grid-2 stagger delay-2" style="height: auto;">
-                    <div class="tilt-wrapper">
-                        <div class="inner-card tilt-card">
-                            <ul class="feature-list" style="margin:0;">
-                                <li><i class="fa-solid fa-link text-cyan"></i> <div><strong>Diagnóstico Conectado:</strong> Cada propuesta responde 1 a 1 a un problema real de vuestra operativa AS-IS.</div></li>
-                                <li><i class="fa-solid fa-business-time text-cyan"></i> <strong>Implantación Realista:</strong> Atacamos primero los "Quick Wins" operativos antes de forzar grandes inversiones de software.</div></li>
-                                <li><i class="fa-solid fa-ruler-combined text-cyan"></i> <strong>Enfoque Técnico Medible:</strong> Nuestro trabajo está condicionado a la mejora objetiva de vuestros KPIs.</div></li>
-                            </ul>
-                        </div>
+                <div class="grid-3 stagger delay-2" style="margin-bottom: 25px;">
+                    <div class="zoom-glass-card hover-emerald" style="padding: 25px;">
+                        <div class="icon-box bg-emerald text-emerald" style="margin-bottom:10px;"><i class="fa-solid fa-box-open"></i></div>
+                        <h3 style="font-size: 16px;">Cajas Retornables</h3>
+                        <p style="font-size: 13px;">Soportes reutilizables para clientes recurrentes.</p>
                     </div>
-                    <div class="tilt-wrapper">
-                        <div class="inner-card tilt-card bg-cyan" style="align-items: center; justify-content: center; text-align: center; border:none;">
-                            <div class="icon-box bg-cyan" style="width: 80px; height: 80px; border-radius: 25px;"><i class="fa-solid fa-handshake text-cyan" style="font-size: 40px;"></i></div>
-                            <h3 class="text-cyan" style="font-size: 26px; margin-bottom: 15px;">Visión B2B</h3>
-                            <p style="font-size: 16px;">Protegemos lo más valioso: la confianza de sus instaladores y empresas de mantenimiento. Un error paraliza una obra, nuestra misión es evitarlo.</p>
-                        </div>
+                    <div class="zoom-glass-card hover-emerald" style="padding: 25px;">
+                        <div class="icon-box bg-emerald text-emerald" style="margin-bottom:10px;"><i class="fa-solid fa-cubes-stacked"></i></div>
+                        <h3 style="font-size: 16px;">Estandarización</h3>
+                        <p style="font-size: 13px;">Diseños por familia para reducir manipulaciones.</p>
+                    </div>
+                    <div class="zoom-glass-card hover-emerald" style="padding: 25px;">
+                        <div class="icon-box bg-emerald text-emerald" style="margin-bottom:10px;"><i class="fa-solid fa-rotate"></i></div>
+                        <h3 style="font-size: 16px;">Logística Inversa</h3>
+                        <p style="font-size: 13px;">Circuito de recuperación y reutilización.</p>
+                    </div>
+                </div>
+                <div class="zoom-glass-card hover-emerald bg-emerald stagger delay-3" style="display: flex; flex-direction: row; justify-content: space-around; align-items: center; border:none; padding: 20px;">
+                    <div>
+                        <p style="text-transform: uppercase; font-size: 14px; font-weight: 800; color: var(--text-muted);">Inversión Aproximada</p>
+                        <p class="text-emerald" style="font-size: 38px; font-weight: 900; line-height: 1;">~ 25.000€</p>
+                    </div>
+                    <div>
+                        <p style="text-transform: uppercase; font-size: 14px; font-weight: 800; color: var(--text-muted);">Implantación Piloto</p>
+                        <p style="font-size: 28px; font-weight: 800; color: var(--text-title);"><i class="fa-regular fa-calendar-check text-emerald"></i> 3 - 6 meses</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 12. Diapositiva Final -->
+        <!-- SLIDE 12: Viabilidad y Costes -->
         <div class="slide" id="slide-12">
-            <div class="glass-board" style="align-items: center; text-align: center;">
-                <div class="icon-box bg-purple stagger" style="width: 120px; height: 120px; border-radius: 40px; margin: 0 auto 30px auto; box-shadow: 0 15px 30px rgba(139,92,246,0.15);">
-                    <i class="fa-solid fa-rocket text-purple" style="font-size: 60px;"></i>
+            <div class="glass-board">
+                <h2 class="slide-title title-cyan stagger">Viabilidad e Impacto Económico</h2>
+                <div class="zoom-glass-card hover-cyan stagger delay-1" style="padding: 0; border: none; overflow: hidden; background: #fff;">
+                    <table class="neon-table">
+                        <thead style="background: rgba(0,0,0,0.03);">
+                            <tr>
+                                <th>Acción Estratégica</th>
+                                <th>Inversión Orientativa</th>
+                                <th>Impacto Esperado</th>
+                                <th>Viabilidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1. SGA/WMS + Layout ABC</strong></td>
+                                <td>30k€ - 100k€</td>
+                                <td class="text-cyan"><strong>Alto:</strong> Reducción de errores y control de picking.</td>
+                                <td><i class="fa-solid fa-circle-check text-cyan"></i> Alta</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2. Optimización Rutas/TMS</strong></td>
+                                <td>8k€ - 15k€ (Software)</td>
+                                <td class="text-purple"><strong>Medio-alto:</strong> Ahorro combustible y menos km.</td>
+                                <td><i class="fa-solid fa-circle-check text-purple"></i> Media-Alta</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3. Embalaje Circular</strong></td>
+                                <td>~ 25.000€</td>
+                                <td class="text-emerald"><strong>Medio:</strong> Reducción residuos y daños.</td>
+                                <td><i class="fa-solid fa-circle-check text-emerald"></i> Alta</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <h1 class="stagger delay-1" style="background: linear-gradient(to right, var(--brand-cyan), var(--brand-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Transformemos la logística <br> en una ventaja competitiva.</h1>
+                <p class="stagger delay-2" style="margin-top: 20px; font-size: 13px; color: var(--text-muted);">*Nota: Inversiones orientativas sujetas a toma de datos real (operarios, referencias, rutas y flota).</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 13: Roadmap Innovador Estático -->
+        <div class="slide" id="slide-13">
+            <div class="glass-board">
+                <h2 class="slide-title title-purple stagger">Hoja de Ruta de Implantación</h2>
                 
-                <p class="stagger delay-2" style="font-size: 22px; margin: 30px auto; font-weight: 600;">Menos errores. Menos costes ocultos. Más confianza B2B.</p>
+                <div class="roadmap-min stagger delay-1">
+                    <div class="roadmap-line"></div>
+                    
+                    <div class="road-node-min node-cyan">
+                        <div class="road-dot"></div>
+                        <div class="road-info">
+                            <h4 class="text-cyan">Mes 1-2</h4>
+                            <p>Auditoría layout ABC (Quick Wins).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="road-node-min node-purple">
+                        <div class="road-dot"></div>
+                        <div class="road-info">
+                            <h4 class="text-purple">Mes 3-6</h4>
+                            <p>Implantación SGA/WMS y formación.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="road-node-min node-amber">
+                        <div class="road-dot"></div>
+                        <div class="road-info">
+                            <h4 class="text-amber">Mes 7-9</h4>
+                            <p>TMS, optimización de rutas y consolidación.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="road-node-min node-pink">
+                        <div class="road-dot"></div>
+                        <div class="road-info">
+                            <h4 class="text-pink">Mes 10-12</h4>
+                            <p>Piloto embalaje circular con clientes B2B.</p>
+                        </div>
+                    </div>
+
+                    <div class="road-node-min node-emerald">
+                        <div class="road-dot"></div>
+                        <div class="road-info">
+                            <h4 class="text-emerald">Mes 12-18</h4>
+                            <p>Escalado y mejora continua de KPIs.</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="stagger delay-2" style="text-align: center; font-weight: 700; margin-top: 30px;">Transformación progresiva: quick wins primero, inversión estructural después.</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 14: KPIs (3D TILT EFFECT) -->
+        <div class="slide" id="slide-14">
+            <div class="glass-board">
+                <h2 class="slide-title title-pink stagger">Indicadores para medir el éxito</h2>
                 
-                <div class="stagger delay-3" style="width: 80px; height: 4px; background: var(--text-dark); margin: 0 auto 40px auto; border-radius: 2px;"></div>
+                <div class="grid-4 stagger delay-1" style="height: 100%;">
+                    <!-- KPI 1 -->
+                    <div class="tilt-wrapper">
+                        <div class="kpi-tilt-card">
+                            <i class="fa-solid fa-boxes-packing text-cyan" style="font-size: 30px; margin-bottom:10px;"></i>
+                            <h4 style="font-size: 16px;">% Pedidos sin error</h4>
+                            <div class="kpi-subcard">Mide la precisión del picking para reducir incidencias B2B.</div>
+                        </div>
+                    </div>
+                    <!-- KPI 2 -->
+                    <div class="tilt-wrapper">
+                        <div class="kpi-tilt-card">
+                            <i class="fa-solid fa-clipboard-check text-purple" style="font-size: 30px; margin-bottom:10px;"></i>
+                            <h4 style="font-size: 16px;">Exactitud inventario</h4>
+                            <div class="kpi-subcard">Cruza stock físico vs sistema para mejorar fiabilidad.</div>
+                        </div>
+                    </div>
+                    <!-- KPI 3 -->
+                    <div class="tilt-wrapper">
+                        <div class="kpi-tilt-card">
+                            <i class="fa-solid fa-chart-line text-amber" style="font-size: 30px; margin-bottom:10px;"></i>
+                            <h4 style="font-size: 16px;">Líneas por hora</h4>
+                            <div class="kpi-subcard">Evalúa la productividad de preparación tras aplicar Layout ABC.</div>
+                        </div>
+                    </div>
+                    <!-- KPI 4 -->
+                    <div class="tilt-wrapper">
+                        <div class="kpi-tilt-card">
+                            <i class="fa-solid fa-stopwatch text-pink" style="font-size: 30px; margin-bottom:10px;"></i>
+                            <h4 style="font-size: 16px;">Entregas a tiempo</h4>
+                            <div class="kpi-subcard">OTIF: Garantiza la promesa de servicio en tiempo y forma.</div>
+                        </div>
+                    </div>
+                    <!-- KPI 5 -->
+                    <div class="tilt-wrapper">
+                        <div class="kpi-tilt-card">
+                            <i class="fa-solid fa-truck text-blue" style="font-size: 30px; margin-bottom:10px;"></i>
+                            <h4 style="font-size: 16px;">Km por pedido</h4>
+                            <div class="kpi-subcard">Mide la eficiencia del TMS y la ocupación del vehículo.</div>
+                        </div>
+                    </div>
+                    <!-- KPI 6 -->
+                    <div class="tilt-wrapper">
+                        <div class="kpi-tilt-card">
+                            <i class="fa-solid fa-arrow-rotate-left text-red" style="font-size: 30px; margin-bottom:10px;"></i>
+                            <h4 style="font-size: 16px;">Tasa Devoluciones</h4>
+                            <div class="kpi-subcard">Control del volumen de logística inversa por error interno.</div>
+                        </div>
+                    </div>
+                    <!-- KPI 7 -->
+                    <div class="tilt-wrapper">
+                        <div class="kpi-tilt-card">
+                            <i class="fa-solid fa-cloud text-emerald" style="font-size: 30px; margin-bottom:10px;"></i>
+                            <h4 style="font-size: 16px;">Emisiones por pedido</h4>
+                            <div class="kpi-subcard">Monitoriza la huella de carbono logística directa (GRI 305).</div>
+                        </div>
+                    </div>
+                    <!-- KPI 8 -->
+                    <div class="tilt-wrapper">
+                        <div class="kpi-tilt-card">
+                            <i class="fa-solid fa-box-open text-emerald" style="font-size: 30px; margin-bottom:10px;"></i>
+                            <h4 style="font-size: 16px;">% Embalaje reutilizable</h4>
+                            <div class="kpi-subcard">Evalúa el éxito del programa RTP y circularidad (GRI 306).</div>
+                        </div>
+                    </div>
+                </div>
+                <p class="stagger delay-2" style="text-align: center; margin-top: 25px; font-weight: 800; font-size: 22px; color: var(--text-title);">Lo que no se mide, no se puede mejorar.</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 15: Cierre Ejecutivo -->
+        <div class="slide" id="slide-15">
+            <div class="glass-board">
+                <h2 class="slide-title title-cyan stagger">¿Por qué elegir a PCCY-Log?</h2>
+                <p class="stagger delay-1" style="font-size: 18px; margin-bottom: 25px;">No somos una consultoría externa que entrega un informe genérico. Somos el <strong>socio técnico</strong> que convierte el diagnóstico en implantación medible.</p>
                 
-                <p class="stagger delay-3" style="font-size: 32px; font-weight: 800; color: var(--text-title);">¿Empezamos?</p>
+                <div class="grid-2 stagger delay-2" style="margin-bottom: 30px;">
+                    <div class="zoom-glass-card hover-cyan">
+                        <ul class="feature-list" style="margin:0; background: transparent; border:none; box-shadow:none;">
+                            <li><i class="fa-solid fa-link text-cyan"></i> <div><strong>Diagnóstico Conectado:</strong> Cada propuesta responde a un problema AS-IS.</div></li>
+                            <li><i class="fa-solid fa-ruler-combined text-cyan"></i> <div><strong>Enfoque Medible:</strong> Trabajo condicionado a KPIs y SGA/WMS.</div></li>
+                        </ul>
+                    </div>
+                    <div class="zoom-glass-card hover-cyan">
+                        <ul class="feature-list" style="margin:0; background: transparent; border:none; box-shadow:none;">
+                            <li><i class="fa-solid fa-business-time text-cyan"></i> <div><strong>Implantación Realista:</strong> Priorizamos quick wins antes que grandes gastos.</div></li>
+                            <li><i class="fa-solid fa-handshake text-cyan"></i> <div><strong>Visión B2B:</strong> Protegemos la confianza de sus instaladores.</div></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="zoom-glass-card bg-cyan hover-cyan stagger delay-3" style="text-align: center; border: none; padding: 25px;">
+                    <h3 class="text-cyan" style="font-size: 22px; margin-bottom: 10px;">PCCY-Log acompaña a ELECTROSUM PRO en una transformación viable, medible y escalable.</h3>
+                    <p style="font-size: 32px; font-weight: 800; color: var(--text-title); margin: 0;">¿Empezamos?</p>
+                </div>
             </div>
         </div>
 
@@ -701,14 +865,16 @@
         document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
 
         function animateGlow() {
-            glowX += (mouseX - glowX) * 0.1; glowY += (mouseY - glowY) * 0.1;
-            cursorGlow.style.left = `${glowX}px`; cursorGlow.style.top = `${glowY}px`;
+            if (cursorGlow) {
+                glowX += (mouseX - glowX) * 0.1; glowY += (mouseY - glowY) * 0.1;
+                cursorGlow.style.left = `${glowX}px`; cursorGlow.style.top = `${glowY}px`;
+            }
             requestAnimationFrame(animateGlow);
         }
         animateGlow();
 
-        // --- 2. 3D Tilt Effect Interactivo ---
-        const tiltCards = document.querySelectorAll('.tilt-card');
+        // --- 2. 3D Tilt Effect EXCLUSIVO para KPIs ---
+        const tiltCards = document.querySelectorAll('.kpi-tilt-card');
         
         tiltCards.forEach(card => {
             card.addEventListener('mousemove', e => {
@@ -718,11 +884,10 @@
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
                 
-                // Calculo de rotación (inversión de ejes para efecto hundimiento)
-                const rotateX = ((y - centerY) / centerY) * -8; // Máx 8 grados
-                const rotateY = ((x - centerX) / centerX) * 8;
+                const rotateX = ((y - centerY) / centerY) * -12; // Inclinación fuerte
+                const rotateY = ((x - centerX) / centerX) * 12;
                 
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
             });
             
             card.addEventListener('mouseleave', () => {
@@ -761,7 +926,7 @@
             currentSlide = newIndex;
             counter.innerText = `${currentSlide + 1} / ${slides.length}`;
 
-            setTimeout(() => { isAnimating = false; }, 900);
+            setTimeout(() => { isAnimating = false; }, 800);
         }
 
         function nextSlide() {
