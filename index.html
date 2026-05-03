@@ -235,6 +235,7 @@
         .text-purple { color: var(--brand-purple); }
         .text-amber { color: var(--brand-amber); }
         .text-pink { color: var(--brand-pink); }
+        .text-blue { color: var(--brand-blue); }
         .text-red { color: var(--brand-red); }
         
         .icon-box {
@@ -277,9 +278,9 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        .neon-table { width: 100%; border-collapse: separate; border-spacing: 0; background: rgba(255,255,255,0.7); border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); border: 1px solid #fff; overflow: visible; }
-        .neon-table th, .neon-table td { padding: 25px 30px; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.05); transition: all 0.3s ease; }
-        .neon-table th { font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-size: 13px; background: rgba(0,0,0,0.02); }
+        .neon-table { width: 100%; border-collapse: separate; border-spacing: 0; background: rgba(255,255,255,0.7); border-radius: 24px; overflow: visible; box-shadow: 0 10px 30px rgba(0,0,0,0.02); border: 1px solid #fff; }
+        .neon-table th, .neon-table td { padding: 25px 20px; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.05); transition: all 0.3s ease; }
+        .neon-table th { font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-size: 12px; background: rgba(0,0,0,0.02); }
         .neon-table tr:last-child td { border-bottom: none; }
         
         /* Efecto Hover en las filas de la tabla */
@@ -668,7 +669,7 @@
         <!-- SLIDE 12: Viabilidad y Costes -->
         <div class="slide" id="slide-12">
             <div class="glass-board">
-                <h2 class="slide-title title-cyan stagger">Viabilidad e Impacto Económico</h2>
+                <h2 class="slide-title title-cyan stagger">Viabilidad + Costes + Riesgos</h2>
                 <div class="zoom-glass-card hover-cyan stagger delay-1" style="padding: 0; border: none; overflow: visible; background: #fff;">
                     <table class="neon-table">
                         <thead style="background: rgba(0,0,0,0.03);">
@@ -676,6 +677,7 @@
                                 <th>Acción Estratégica</th>
                                 <th>Inversión Orientativa</th>
                                 <th>Impacto Esperado</th>
+                                <th>Posibles Riesgos</th>
                                 <th>Viabilidad</th>
                             </tr>
                         </thead>
@@ -684,23 +686,26 @@
                                 <td><strong>1. SGA/WMS + Layout ABC</strong></td>
                                 <td>30k€ - 100k€</td>
                                 <td class="text-cyan"><strong>Alto:</strong> Reducción de errores y control de picking.</td>
+                                <td style="font-size: 13px; color: var(--brand-red); font-style: italic;">Resistencia al cambio, integración con ERP y calidad inicial de datos maestros.</td>
                                 <td><i class="fa-solid fa-circle-check text-cyan"></i> Alta</td>
                             </tr>
                             <tr>
                                 <td><strong>2. Optimización Rutas/TMS</strong></td>
                                 <td>8k€ - 15k€ (Software)</td>
                                 <td class="text-purple"><strong>Medio-alto:</strong> Ahorro combustible y menos km.</td>
+                                <td style="font-size: 13px; color: var(--brand-red); font-style: italic;">Datos de rutas incompletos, adaptación operativa y dependencia de transportistas/flota.</td>
                                 <td><i class="fa-solid fa-circle-check text-purple"></i> Media-Alta</td>
                             </tr>
                             <tr>
                                 <td><strong>3. Embalaje Circular</strong></td>
                                 <td>~ 25.000€</td>
                                 <td class="text-emerald"><strong>Medio:</strong> Reducción residuos y daños.</td>
+                                <td style="font-size: 13px; color: var(--brand-red); font-style: italic;">Pérdida de soportes, baja tasa de retorno y falta de trazabilidad del circuito inverso.</td>
                                 <td><i class="fa-solid fa-circle-check text-emerald"></i> Alta</td>
                             </tr>
                             <tr style="background: rgba(6, 182, 212, 0.05);">
                                 <td><strong style="color: var(--text-title); font-size: 16px; text-transform: uppercase;">Total Estimado:</strong></td>
-                                <td colspan="3"><strong class="text-cyan" style="font-size: 22px;">63.000€ - 140.000€</strong></td>
+                                <td colspan="4"><strong class="text-cyan" style="font-size: 22px;">63.000€ - 140.000€</strong></td>
                             </tr>
                         </tbody>
                     </table>
@@ -857,7 +862,12 @@
                 </div>
                 
                 <div class="zoom-glass-card bg-cyan hover-cyan stagger delay-3" style="text-align: center; border: none; padding: 25px;">
-                    <h3 class="text-cyan" style="font-size: 22px; margin-bottom: 10px;">En PCCY-Log acompañamos a nuestro cliente en una transformación viable, medible y escalable.</h3>
+                    <p style="font-size: 22px; margin-bottom: 10px; font-weight: 400; color: var(--text-title);">
+                        En <strong style="font-weight: 800;">PCCY-Log</strong> acompañamos a nuestro cliente en una transformación 
+                        <strong class="text-emerald" style="font-weight: 800;">viable</strong>, 
+                        <strong class="text-blue" style="font-weight: 800;">medible</strong> y 
+                        <strong class="text-purple" style="font-weight: 800;">escalable</strong>.
+                    </p>
                     <p style="font-size: 32px; font-weight: 800; color: var(--text-title); margin: 0;">¿Empezamos?</p>
                 </div>
             </div>
@@ -957,3 +967,4 @@
     </script>
 </body>
 </html>
+```
